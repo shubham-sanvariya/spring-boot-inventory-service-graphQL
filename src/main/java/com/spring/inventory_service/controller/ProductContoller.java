@@ -31,10 +31,10 @@ public class ProductContoller {
     }
 
     @MutationMapping
-    public Product updateStocke(@Argument int id, @Argument int stock){
+    public Product updateStock(@Argument int id, @Argument int stock){
         return service.updateStock(id, stock);
     }
-    
+
     @MutationMapping
     public Product receiveNewShipment(@Argument int id, @Argument int quantity){
         return service.receiveNewShipment(id, quantity);
