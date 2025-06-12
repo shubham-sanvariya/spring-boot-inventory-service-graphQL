@@ -16,6 +16,11 @@ public class ProductService {
 
     private final ProductRepository productRepository;
 
+    public Product getProductById(int id){
+        return productRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("product not found with id: " + id));
+    }
+
     public List<Product> getProducts(){
         return productRepository.findAll();
     }
@@ -25,9 +30,17 @@ public class ProductService {
     }
 
     public Product updateStock(int id, int quantity){
-        Product existingProduct = productRepository.findById(id).orElseThrow(() -> new RuntimeException("product not found with id: " + id));
+        Product existingProduct = getProductById(id);
 
         existingProduct.setStock(quantity);
+
+        return productRepository.save(existingProduct);
+    }
+
+    public Product receiveNewShipment(int id, int quantity){
+        Product existingProduct = getProductById(id);
+
+        existingProduct.setStock(existingProduct.getStock() + quantity);
 
         return productRepository.save(existingProduct);
     }
