@@ -37,10 +37,10 @@ public class ProductService {
         return productRepository.save(existingProduct);
     }
 
-    public Product receiveNewShipment(int id, int stock){
+    public Product receiveNewShipment(int id, int quantity){
         Product existingProduct = getProductById(id);
 
-        existingProduct.setStock(existingProduct.getStock() + stock);
+        existingProduct.setStock(existingProduct.getStock() + quantity);
 
         return productRepository.save(existingProduct);
     }
