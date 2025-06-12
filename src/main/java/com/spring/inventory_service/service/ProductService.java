@@ -29,18 +29,18 @@ public class ProductService {
         return productRepository.findByCategory(category);
     }
 
-    public Product updateStock(int id, int quantity){
+    public Product updateStock(int id, int stock){
         Product existingProduct = getProductById(id);
 
-        existingProduct.setStock(quantity);
+        existingProduct.setStock(stock);
 
         return productRepository.save(existingProduct);
     }
 
-    public Product receiveNewShipment(int id, int quantity){
+    public Product receiveNewShipment(int id, int stock){
         Product existingProduct = getProductById(id);
 
-        existingProduct.setStock(existingProduct.getStock() + quantity);
+        existingProduct.setStock(existingProduct.getStock() + stock);
 
         return productRepository.save(existingProduct);
     }

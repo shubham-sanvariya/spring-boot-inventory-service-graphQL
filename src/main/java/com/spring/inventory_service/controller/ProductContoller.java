@@ -3,6 +3,7 @@ package com.spring.inventory_service.controller;
 import java.util.List;
 
 import org.springframework.graphql.data.method.annotation.Argument;
+import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,5 +28,10 @@ public class ProductContoller {
     @QueryMapping
     public List<Product> getProductsByCategory(@Argument String category){
         return service.getProductsByCategory(category);
+    }
+
+    @MutationMapping
+    public Product updateStocke(@Argument int id, @Argument int stock){
+        return service.updateStock(id, stock);
     }
 }
