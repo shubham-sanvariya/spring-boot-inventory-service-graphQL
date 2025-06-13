@@ -1,13 +1,13 @@
 type Product {
-    id: ID,
-    name : String,
-    category: String
-    price : Float
-    stock : Int
+  id: ID!
+  name: String!
+  category: String!
+  price: Float!
+  stock: Int!
 }
 
 type Query{
-    getProducts:[Product]
+    getProducts: [Product]
     getProductsByCategory(category:String):[Product]
 }
 
