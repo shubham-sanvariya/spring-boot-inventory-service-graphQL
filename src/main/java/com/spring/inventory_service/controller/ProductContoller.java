@@ -26,6 +26,11 @@ public class ProductContoller {
     }
 
     @QueryMapping
+    public Product getProductById(@Argument Integer id){
+        return service.getProductById(id);
+    }
+
+    @QueryMapping
     public List<Product> getProductsByCategory(@Argument String category){
         return service.getProductsByCategory(category);
     }
