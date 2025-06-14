@@ -8,6 +8,7 @@ type Product {
 
 type Query{
     getProducts: [Product]
+    getProductById(id : ID!): Product
     getProductsByCategory(category:String):[Product]
 }
 
