@@ -7,7 +7,7 @@ import com.spring.inventory_service.dto.CreateProductDto;
 import com.spring.inventory_service.dto.ResponseProductDto;
 import com.spring.inventory_service.entity.Product;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface ProductMapper {
     
     @Mapping(target = "id", ignore = true)
