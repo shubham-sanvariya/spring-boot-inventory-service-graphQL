@@ -8,6 +8,8 @@ import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.spring.inventory_service.dto.CreateProductDto;
+import com.spring.inventory_service.dto.ResponseProductDto;
 import com.spring.inventory_service.entity.Product;
 import com.spring.inventory_service.service.ProductService;
 
@@ -33,6 +35,11 @@ public class ProductContoller {
     @QueryMapping
     public List<Product> getProductsByCategory(@Argument String category){
         return service.getProductsByCategory(category);
+    }
+
+    @MutationMapping
+    public ResponseProductDto saveNewProduct(CreateProductDto dto){
+        return service.saveNewProduct(dto);
     }
 
     @MutationMapping
