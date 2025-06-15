@@ -6,6 +6,13 @@ type Product {
   stock: Int!
 }
 
+input CreateProductInput {
+  name: String!
+  category: String!
+  price: Float!
+  stock: Int!
+}
+
 type Query{
     getProducts: [Product]
     getProductById(id : ID!): Product
@@ -15,4 +22,5 @@ type Query{
 type Mutation{
     updateStock(id : ID, stock : Int):Product
     receiveNewShipment(id : ID, quantity : Int):Product
+    saveNewProduct(input: CreateProductInput!): Product
 }
