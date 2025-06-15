@@ -4,7 +4,10 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.spring.inventory_service.dto.CreateProductDto;
+import com.spring.inventory_service.dto.ResponseProductDto;
 import com.spring.inventory_service.entity.Product;
+import com.spring.inventory_service.mapper.ProductMapper;
 import com.spring.inventory_service.repo.ProductRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -15,6 +18,7 @@ public class ProductService {
     
 
     private final ProductRepository productRepository;
+    private final ProductMapper productMapper;
 
     public Product getProductById(int id){
         return productRepository.findById(id)
@@ -35,6 +39,11 @@ public class ProductService {
         existingProduct.setStock(stock);
 
         return productRepository.save(existingProduct);
+    }
+
+    public ResponseProductDto saveNewProduct(CreateProductDto dto){
+        Product product = productMapper.toProductEntity(dto);
+        return productMapper.toResponseProductDto(product);
     }
 
     public Product receiveNewShipment(int id, int quantity){
