@@ -38,8 +38,8 @@ public class ProductContoller {
     }
 
     @MutationMapping
-    public ResponseProductDto saveNewProduct(CreateProductDto dto){
-        return service.saveNewProduct(dto);
+    public ResponseProductDto saveNewProduct(@Argument CreateProductDto input){
+        return service.saveNewProduct(input);
     }
 
     @MutationMapping
