@@ -43,7 +43,8 @@ public class ProductService {
 
     public ResponseProductDto saveNewProduct(CreateProductDto dto){
         Product product = productMapper.toProductEntity(dto);
-        return productMapper.toResponseProductDto(product);
+        
+        return productMapper.toResponseProductDto(productRepository.save(product));
     }
 
     public Product receiveNewShipment(int id, int quantity){
